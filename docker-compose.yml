@@ -1,0 +1,22 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports: ["127.0.0.1:8000:8000"]
+    environment:
+      OLLAMA_URL: http://host.docker.internal:11434
+      BORIS_DATA_DIR: /app/data
+      BORIS_API_KEY: ${BORIS_API_KEY:-change-this-for-local-use}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.1:8b}
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    volumes: ["./data:/app/data"]
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    ports: ["127.0.0.1:8501:8501"]
+    environment:
+      BORIS_API_URL: http://api:8000
+      BORIS_API_KEY: ${BORIS_API_KEY:-change-this-for-local-use}
+    depends_on: [api]
