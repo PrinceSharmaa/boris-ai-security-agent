@@ -2,7 +2,7 @@
 
 **Chat-driven security investigations · LangGraph orchestration · Retrieval-augmented generation · Human review**
 
-![BORIS end-to-end architecture](docs/boris-architecture.png)
+![BORIS end-to-end architecture](/boris-architecture.png)
 
 BORIS is a local-first educational security assistant built with **Streamlit, FastAPI, LangGraph, Ollama, ChromaDB, Sentence Transformers, and SQLite**. It can retrieve synthetic security events, correlate related alerts, apply explainable demonstration P1–P4 scoring, retrieve investigation runbooks, and draft ServiceNow-ready notes for manual copying. High-priority cases can be routed to an advisory human review queue.
 
